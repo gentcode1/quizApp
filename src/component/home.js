@@ -1,43 +1,87 @@
 import React from "react";
-import Navigation from "./navigation";
-import LeftRect from "../images/Rectangle 2.svg";
-import RightRect from "../images/Rectangle 1.svg";
-import polygon from "../images/Polygon 1 (1).png";
-import homeImage from "../images/home2 1 (1).png";
+import logo from "../images/klab.png";
+import Instruction from "./Instruction";
+import Categories from "./Categories";
+import image from "../images/course.jpg";
+import { Link } from "react-router-dom";
 
 function home() {
   return (
-    <div class="h-screen bg-black-700  flex flex-col">
-      <div class="relative ">
-        <div class="">
-          <img class="absolute left-0 top-0 " src={LeftRect} alt="" />
-        </div>
-        <div className="home__nav p-8 ">
-          <Navigation home='Home' about='About'/>
-        </div>
-      </div>
-      <div class="flex flex-row  justify-evenly pt-12">
-        <div class="flex pl-32 w-full h-full ">
-          <div class=" flex flex-col  w-1/4 h-full rounded-lg ring-1 ring-gray-400 ring-opacity-5 shadow-xl overflow-hidden bg-white items-center justify-evenly m-4 relative">
-            <img class="absolute top-0" src={polygon} alt="" />
-            <h1 class="text-3xl font-bold pt-8 ">Guidelines </h1>
-            <p class="p-4  opacity-80 text-xl">
-              quiz contain five questions<br/> Its done in 15 minutes<br/>  read  the
-              question carefully  and tick the right answer  click on Finish if you are done
-              with all questions .<br/> goodluck!
-            </p>
-            <a class="mx-auto lg:mx-0 hover:underline bg-primary text-white font-bold rounded-lg mt-4 lg:mt-0 py-2 px-6 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              Start Now
-            </a>
+    <div class="flex flex-col  md:flex-row lg:flex-row justify-center px-6 ">
+      <div class="w-full lg:w-3/4  flex flex-col  md:flex-row lg:flex-row  border-md justify-center items-center  shadow-md">
+        <div className="h-full w-full md:w-1/2 p-4 ">
+          <img src={logo} alt="" className="w-24 h-8 mb-4 " />
+          <h2 className="txt-md md:text-lg font-semibold">
+            kLab Startups Academy Challenge
+          </h2>
+          <h1 className="txt-lg md:text-2xl font-bold text-blue-700">
+            Instructions
+          </h1>
+          <div className="mr-4">
+            <Instruction rule={"read the instruction carefully to start a quiz you need to click on the cotegory first and let's go to start"} />
+            <Instruction rule={"quiz is going to take 10 minutes and you do five questions"} />
+            <Instruction rule={"it's multiple choice and you need to select only  one answer and click on arrow to continue if you are sure cause there is no turn back"} />
+            <Instruction rule={"make sure to do right choices and rememember it's time bound"} />
+            
           </div>
-          <div class="pl-24">
-            <img src={homeImage} alt="" />
+          <div>
+            <h1>Categories</h1>
+            <div className="flex flex-col  md:flex-row lg:fle-row  mt-4">
+              <a href="https://icons8.com/icon/0Da6k7SMq0hs/react"></a>
+              <Categories
+                icon={"https://img.icons8.com/dotty/80/000000/react.png"}
+                name={"react"}
+              />
+              <Categories
+                icon={"https://img.icons8.com/ios/50/000000/flutter.png"}
+                name={"Flutter"}
+              />
+              <Categories
+                icon={
+                  "https://img.icons8.com/material-outlined/50/000000/django.png"
+                }
+                name={"Django"}
+              />
+              <Categories
+                icon={"https://img.icons8.com/ios-filled/50/000000/laravel.png"}
+                name={"Laravel"}
+              />
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="">
-        <img class="absolute bottom-0 right-0" src={RightRect} alt="" />
+        <div
+          class=" h-screen md:h-full bg-black opacity-55 lg:block w-full lg:w-1/2 bg-cover rounded-r-lg "
+          style={{
+            backgroundImage: "url(" + `${image}` + ")",
+            backgroundColor: "white",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="flex h-full items-center justify-center">
+            <div className="flex justify-evenly items-center rounded-full bg-white p-2 h-20 w-20 hover:bg-gray-100 transition transform cursor-pointer  hover:scale-105 duration-300 ease-in-out">
+              <Link to="/question"><button className="font-bold text-sm ">Let's Go</button></Link>
+              <svg
+                class="h-8 w-8 text-black"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                {" "}
+                <path stroke="none" d="M0 0h24v24H0z" />{" "}
+                <line x1="5" y1="12" x2="19" y2="12" />{" "}
+                <line x1="15" y1="16" x2="19" y2="12" />{" "}
+                <line x1="15" y1="8" x2="19" y2="12" />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

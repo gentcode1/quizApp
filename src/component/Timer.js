@@ -1,21 +1,27 @@
 import React,{useState,useEffect} from 'react'
+import Result from "./result";
+import Failure from "./Failure";
+import { Link, useNavigate } from 'react-router-dom';
 
-const Timer = () => {
 
+const Timer = ({score}) => {
+  const navigate= useNavigate();
     const [countDown, setCountDown] = React.useState(0);
-  const [runTimer, setRunTimer] = React.useState(false);
+  const [runTimer, setRunTimer] = React.useState(true);
 
   React.useEffect(() => {
     let timerId;
 
     if (runTimer) {
-      setCountDown(60 * 15);
+      setCountDown(60 * 10);
       timerId = setInterval(() => {
         setCountDown((countDown) => countDown - 1);
       }, 1000);
-    } else {
-      clearInterval(timerId);
-    }
+    } 
+    
+    
+
+    
 
     return () => clearInterval(timerId);
   }, [runTimer]);
@@ -33,16 +39,23 @@ const Timer = () => {
   const seconds = String(countDown % 60).padStart(2, 0);
   const minutes = String(Math.floor(countDown / 60)).padStart(2, 0);
 
-    
+    console.log(score)
+
+    let result;
+    if ( score >= 50 && countDown === 0) {
+      result = navigate("/result", {state:{score:score}});
+    }
+    if (score < 50 && countDown === 0) {
+      result = navigate("/fail",{state:{score:score}});
+    }
     return (
         <div className='flex flex-col bg-white  w-24 h-24 rounded-full ring-1 text-primary items-center justify-center'>
-            
-     <div className=''>
+        <div className=''>
      {minutes}:{seconds}
       </div>
 
-      <button type="button" onClick={togglerTimer}>
-        {runTimer ? "Stop" : "Start"}
+      <button type="button " onClick={togglerTimer}>
+        {/* {runTimer ? "Stop" : "Start"} */}
       </button>
     </div>
   );

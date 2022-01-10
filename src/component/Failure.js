@@ -1,11 +1,13 @@
 import React from "react";
 import Navbar from "./Navbar";
-
+import { Link,useParams } from "react-router-dom";
 import Progress from "./Progress";
 import Sorry from "../images/sorry.webp";
 
 
-const Failure = () => {
+const Failure = (props) => {
+ 
+   console.log(props.score);
   return (
     <div className="bg-primary h-screen flex flex-col">
       
@@ -34,7 +36,7 @@ const Failure = () => {
                       but  Don’t worry you still have  chance ! you can  retake the quiz by click on <span className='text-primary'>Retake Quiz</span>   
                       </p>
                <div className='mb-8'>       
-            <Progress progressPercentage={25}  />
+            <Progress progressPercentage={props.score}  />
             </div>
           </div>
          
@@ -85,9 +87,9 @@ const Failure = () => {
               </p>
             </div>
             <div className='flex'>
-            <button className='ring-1 rounded-lg text-white  bg-primary w-auto h-8'>
+            <Link to='/'><button className='ring-1 rounded-lg text-white  bg-primary w-auto h-8'>
               Retake Quiz
-            </button>
+            </button></Link>
           </div>
           </div>
           

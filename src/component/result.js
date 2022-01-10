@@ -5,7 +5,8 @@ import Progress from "./Progress";
 import Success from "../images/success.webp";
 import Confetti from "react-confetti";
 
-const Result = () => {
+const Result = (props) => {
+  
   return (
     <div className="bg-primary h-screen flex flex-col">
       <Confetti />
@@ -30,7 +31,7 @@ const Result = () => {
             <p className="mb-4 text-primary">
               Congratulation HyMe You Have Made It{" "}
             </p>
-            <Progress progressPercentage={75} />
+            <Progress progressPercentage={props.score} />
           </div>
          
           <div className="flex justify-between items-center ">

@@ -2,7 +2,7 @@ import React from 'react'
 
 const questionCounter = () => {
     return (
-        <div class="flex flex-col h-full w-full justify-between">
+        <div class="flex flex-row md:flex-col h-full w-full justify-between">
             <div class='bg-white h-6 w-6 rounded-full  flex justify-center items-center mb-3'>
                 1
             </div>

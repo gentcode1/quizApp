@@ -11,13 +11,13 @@ const Questions = ({
 
   
 
-  const handleChange = (e) => {
-    let {name, value } = e.target
-    setName({
-      [name]:value
-    })
+  // const handleChange = (e) => {
+  //   let {name, value } = e.target
+  //   setName({
+  //     [name]:value
+  //   })
     
-  };
+  // };
   
 
   return (
@@ -45,7 +45,7 @@ const Questions = ({
                 value={answer}
                 name="questions"
                 type="radio"
-                onChange={handleChange}
+                onChange={(e)=>setName(e.target.value)}
                 onClick={() => handleAnswer(answer)}
               />
               {answer}
@@ -56,10 +56,10 @@ const Questions = ({
 
       <div className=" flex justify-around mt-8 my-4">
         {showAnswers && (
-          <button className="ring-1 ring-primary rounded-lg h-8 w-16"
+          <button className="ring-1 ring-black md:ring-primary rounded-lg h-8 w-16"
         onClick={handleNextQuestion}>
           <svg
-            class="h-8 w-8 text-primary "
+            class="h-8 w-8 text-black md:text-primary "
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
